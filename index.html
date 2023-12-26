@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./x.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        a{
+            padding: 10px;
+            background-color: orange;
+            color: white;
+            text-decoration: none;
+        }
+        .ok{
+            position: relative;
+            display: inline-block;
+        }
+        #img{
+            position: absolute;
+            top: 30%;
+            right: 45%;
+            /* transform-origin: 50% 50%; */
+            transform: scale(0.5);
+            /* opacity: 0.5; */
+        }
+    </style>
+</head>
+<body>
+    <div class="ok">
+        <video id="webCam" autoplay playsinlne width="800" height="600"></video>        
+        <img id="img"  src="data:image/jpeg;base64,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" alt="">
+    </div>
+    <input type="range"  min="1" max="100" value="50"  id="myopacity">
+    <p>Opacity: <span id="demo1"></span></p>
+    <input type="range"  min="1" max="100" value="50"  id="myimg">
+    <p>scale: <span id="demo2"></span></p>
+    <canvas id="canvas"></canvas>
+    <a download>SNAP</a>
+    <script>
+        
+        var slider1 = document.getElementById("myopacity");
+        var output1 = document.getElementById("demo1");
+        output1.innerHTML = slider1.value;
+
+        slider1.oninput = function() {
+            output1.innerHTML = this.value;
+            document.getElementById("img").style = "transform: scale(" + (slider2.value/50) + ");"+
+                                                    "opacity: " + (this.value/100);
+
+        }
+
+
+        var slider2 = document.getElementById("myimg");
+        var output2 = document.getElementById("demo2");
+        output2.innerHTML = slider2.value;
+
+        slider2.oninput = function() {
+            output2.innerHTML = this.value;
+            document.getElementById("img").style = "transform: scale(" + (this.value/50) + ");" + 
+                                                    "opacity: " + (slider1.value/100);
+        }
+
+
+        const webCamElement = document.getElementById("webCam");
+        const canvasElement = document.getElementById("canvas");
+        const webCam = new Webcam(webCamElement, "user", canvasElement);
+        webCam.start();
+
+    </script>
+</body>
+</html>
