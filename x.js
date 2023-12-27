@@ -105,4 +105,6 @@ class Webcam{
                 let data=this._canvasElement.toDataURL("image/png");
                 return data
             }
-            else{throw"canvas element is missing"}}}
+            else{throw"canvas element is missing"}
+    }
+}
