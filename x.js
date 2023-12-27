@@ -1,6 +1,6 @@
 
 class Webcam{
-    constructor(webcamElement,facingMode="user",canvasElement=null,snapSoundElement=null)
+    constructor(webcamElement,facingMode="environment",canvasElement=null,snapSoundElement=null)
     {
         this._webcamElement=webcamElement;
         this._webcamElement.width=this._webcamElement.width||640;
@@ -30,7 +30,7 @@ class Webcam{
             }
         });
         if(this._webcamList.length==1){
-            this._facingMode="user"
+            this._facingMode="environment"
         }return this._webcamList}
     getMediaConstraints(){
         var videoConstraints={};
@@ -46,10 +46,10 @@ class Webcam{
     }
     selectCamera(){
         for(let webcam of this._webcamList){
-            if(this._facingMode=="user"&&webcam.label.toLowerCase().includes("front")||this._facingMode=="enviroment"&&webcam.label.toLowerCase().includes("back")){
+            if(this._facingMode=="environment"&&webcam.label.toLowerCase().includes("front")||this._facingMode=="enviroment"&&webcam.label.toLowerCase().includes("back")){
                 this._selectedDeviceId=webcam.deviceId;break
             }}}
-    flip(){this._facingMode=this._facingMode=="user"?"enviroment":"user";
+    flip(){this._facingMode=this._facingMode=="environment"?"enviroment":"user";
     this._webcamElement.style.transform="";
     this.selectCamera()
     }
@@ -78,7 +78,7 @@ class Webcam{
             navigator.mediaDevices.getUserMedia(this.getMediaConstraints()).then(stream=>{
                 this._streamList.push(stream);
                 this._webcamElement.srcObject=stream;
-                if(this._facingMode=="user"){
+                if(this._facingMode=="environment"){
                     this._webcamElement.style.transform="scale(-1,1)"
                 }
                 this._webcamElement.play();
@@ -99,7 +99,7 @@ class Webcam{
             this._canvasElement.height=this._webcamElement.scrollHeight;
             this._canvasElement.width=this._webcamElement.scrollWidth;
             let context=this._canvasElement.getContext("2d");
-            if(this._facingMode=="user"){context.translate(this._canvasElement.width,0);
+            if(this._facingMode=="environment"){context.translate(this._canvasElement.width,0);
                 context.scale(-1,1)}context.clearRect(0,0,this._canvasElement.width,this._canvasElement.height);
                 context.drawImage(this._webcamElement,0,0,this._canvasElement.width,this._canvasElement.height);
                 let data=this._canvasElement.toDataURL("image/png");
