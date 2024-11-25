@@ -79,7 +79,7 @@ class Webcam{
                 this._streamList.push(stream);
                 this._webcamElement.srcObject=stream;
                 if(this._facingMode=="environment"){
-                    this._webcamElement.style.transform="scale(-1,1)"
+                    this._webcamElement.style.transform="scale(1,1)"
                 }
                 this._webcamElement.play();
                 resolve(this._facingMode)
